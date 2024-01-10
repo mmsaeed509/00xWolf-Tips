@@ -98,7 +98,7 @@ while IFS=$'\n' read -r -d '' line;
 done < <(git status -s -z)
 
 # Remove the trailing comma and space, if any #
-DEFAULT_COMMIT_MSG=$(echo "$DEFAULT_COMMIT_MSG" | sed 's/, $//')
+DEFAULT_COMMIT_MSG=$(echo -e "$DEFAULT_COMMIT_MSG" | sed 's/, $//' | tr '\\' '\n')
 
 # If no changes detected, use a default message #
 if [ -z "$DEFAULT_COMMIT_MSG" ];
@@ -193,7 +193,7 @@ if [ "${CREATE_PR}" == true ] && [ -n "${TARGET_PR_BRANCH}" ];
     
     then
     
-        echo -e "\n${BBlue}[+] Creating a pull request from ${TARGET_BRANCH} to ${TARGET_PR_BRANCH}...${RESET_COLOR}"
+        echo -e "\n${BBlue}[+] Creating a pull request from ${BRed}${TARGET_BRANCH} ${BBlue}to ${BYellow}${TARGET_PR_BRANCH}...${RESET_COLOR}"
         gh pr create --base ${TARGET_PR_BRANCH} --head ${TARGET_BRANCH} --title "Pull Request: ${TARGET_BRANCH} to ${TARGET_PR_BRANCH}" --body "Please review and merge."
 
 fi

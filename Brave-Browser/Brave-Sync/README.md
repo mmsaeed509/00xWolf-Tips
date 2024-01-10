@@ -24,5 +24,9 @@ The idea here is that we're gonna:
   - open terminal here: `git init`
   - add Remote to GitHub Repo: `git remote add origin https://github.com/mmsaeed509/Brave-Cloud-Sync.git`
     - ![](./imgs/remote-repo.png)
-  - then add [**`push.sh`**](./push.sh) script to use it to push to GitHub Repo
+  - then add [**`git-push.sh`**](./git-push.sh) script to use it to push to GitHub Repo
   - then push to GitHub Repo `./push.sh`
+
+---
+
+### 2nd create a Cron Job to push the Sync (For Linux)
