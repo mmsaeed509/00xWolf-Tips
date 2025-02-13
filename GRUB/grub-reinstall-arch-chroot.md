@@ -31,3 +31,19 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Exodi
 
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
+
+---
+
+on `ext4`
+
+```bash
+sudo mount /dev/nvme0n1p1 /mnt
+
+sudo mount /dev/nvme0n1p2  /mnt/boot/efi
+
+sudo arch-chroot /mnt
+
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ExodiaOS
+
+grub-mkconfig -o /boot/grub/grub.cfg
+```
